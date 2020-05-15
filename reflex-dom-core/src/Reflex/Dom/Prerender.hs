@@ -226,7 +226,7 @@ instance (Reflex t, Monad m) => DomRenderHook t (UnrunnableT js t m) where
   withRenderHook _ _ = unrunnable
   requestDomAction _ = unrunnable
   requestDomAction_ _ = unrunnable
-instance (Reflex t, Monad m) => Prerender JS' t (UnrunnableT js t m) where
+instance (Reflex t, Monad m, MonadHold t m) => Prerender JS' t (UnrunnableT js t m) where
   type Client (UnrunnableT js t m) = UnrunnableT js t m
   prerender _ _ = unrunnable
 
